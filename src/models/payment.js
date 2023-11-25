@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const paymentSchema = new mongoose.Schema({
   type: String, // e.g., 'Stripe', 'PayPal'
@@ -20,4 +20,4 @@ paymentSchema.pre("save", async function (next) {
 });
 
 const PaymentMongo = mongoose.model("Payment", paymentSchema);
-export default PaymentMongo;
+module.exports =  PaymentMongo;

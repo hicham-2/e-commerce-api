@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
@@ -21,4 +21,4 @@ orderSchema.pre("save", async function (next) {
 });
 
 const OrderMongo = mongoose.model("Order", orderSchema);
-export default OrderMongo;
+module.exports =  OrderMongo;

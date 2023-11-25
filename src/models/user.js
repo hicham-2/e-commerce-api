@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   first_name: String,
@@ -25,4 +25,4 @@ userSchema.pre("save", async function (next) {
 });
 
 const UserMongo = mongoose.model("User", userSchema);
-export default UserMongo;
+module.exports = UserMongo;

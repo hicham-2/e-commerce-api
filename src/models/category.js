@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const categorySchema = new mongoose.Schema({
   name: String,
@@ -18,4 +18,4 @@ categorySchema.pre("save", async function (next) {
 });
 
 const CategoryMongo = mongoose.model("Category", categorySchema);
-export default CategoryMongo;
+module.exports =  CategoryMongo;

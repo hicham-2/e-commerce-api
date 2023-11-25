@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const alertSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
@@ -19,4 +19,4 @@ alertSchema.pre("save", async function (next) {
 });
 
 const AlertMongo = mongoose.model("Alert", alertSchema);
-export default AlertMongo;
+module.exports = AlertMongo;

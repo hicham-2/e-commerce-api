@@ -1,8 +1,19 @@
-import { DataTypes, Model } from "sequelize";
-import sequelize from "../../config/config.js";
+const { Model } = require('sequelize');
 
-class OrderDetails extends Model {}
+module.exports = (sequelize, DataTypes) => {
+  class OrderDetails extends Model {
+      /**
+       * Helper method for defining associations.
+       * This method is not a part of Sequelize lifecycle.
+       * The `models/index` file will call this method automatically.
+       */
+      static associate(models) {
+          // define association here
+        //  User.belongsTo(models.agency, { foreignKey: 'agency_id', targetKey: 'id' });
+      }
+  }
 
+  
 OrderDetails.init(
   {
     orderDetailsID: {
@@ -25,4 +36,5 @@ OrderDetails.init(
   { sequelize, modelName: "OrderDetails" }
 );
 
-export default OrderDetails;
+  return OrderDetails;
+};

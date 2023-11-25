@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const brandSchema = new mongoose.Schema({
   name: String,
@@ -19,4 +19,4 @@ brandSchema.pre("save", async function (next) {
 });
 
 const BrandMongo = mongoose.model("Brand", brandSchema);
-export default BrandMongo;
+module.exports =  BrandMongo;

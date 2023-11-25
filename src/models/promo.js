@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const promoSchema = new mongoose.Schema({
   description: String,
@@ -21,4 +21,4 @@ promoSchema.pre("save", async function (next) {
 });
 
 const PromoMongo = mongoose.model("Promo", promoSchema);
-export default PromoMongo;
+module.exports =  PromoMongo;
