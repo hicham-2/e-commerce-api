@@ -1,0 +1,47 @@
+version: "3"
+services:
+
+  api:
+    image: node:20.0.0-alpine
+    build: .
+    container_name: api
+    working_dir: /app
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: sh -c "yarn install && yarn dev"
+  
+  adminer:
+    image: adminer:4.8.1
+    container_name: adminer
+    ports:
+      - 8080:8080
+    
+  db:
+    image: postgres:15.2-alpine
+    container_name: db
+    environment:
+      PSQL_HOST: db
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: ecommerce-user
+      POSTGRES_PASSWORD: ChangeMe
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+  
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+volumes:
+  db:
+  redis_data:
